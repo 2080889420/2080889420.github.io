@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呱呱漫画-呱呱漫画大全与阅读指南</title>
+    <meta name="description" content="呱呱漫画是深受欢迎的在线漫画阅读平台，提供海量高清漫画资源、每日更新、分类齐全。了解呱呱漫画的功能特色、使用步骤、常见问题及阅读技巧。">
+    <meta name="keywords" content="呱呱漫画,漫画阅读,在线漫画,漫画大全,高清漫画,漫画推荐">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: #f5f7fa;
+            color: #2d3436;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部品牌栏 */
+        .header {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            padding: 18px 0;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background-color: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: #6c5ce7;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .logo-text {
+            color: #fff;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .header-nav {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .header-nav a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+        .header-nav a:hover {
+            color: #fff;
+            border-bottom-color: #fff;
+        }
+
+        /* 首屏横幅 */
+        .hero {
+            background: linear-gradient(145deg, #6c5ce7 0%, #8e7cf3 50%, #b2a4f8 100%);
+            padding: 70px 0;
+            text-align: center;
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            padding: 8px 24px;
+            font-size: 14px;
+            margin-top: 10px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* 内容通用 */
+        .section {
+            padding: 55px 0;
+        }
+        .section-alt {
+            background-color: #fff;
+        }
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #2d3436;
+            position: relative;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #636e72;
+            font-size: 16px;
+            max-width: 650px;
+            margin: 0 auto 42px;
+        }
+
+        /* 卡片网格 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(108, 92, 231, 0.12);
+        }
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #2d3436;
+        }
+        .card p {
+            color: #636e72;
+            font-size: 15px;
+        }
+
+        /* 分类标签 */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 36px;
+        }
+        .tag {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: default;
+            transition: all 0.3s;
+            color: #555;
+        }
+        .tag:hover {
+            background: #6c5ce7;
+            border-color: #6c5ce7;
+            color: #fff;
+        }
+
+        /* 特色区块 */
+        .feature-box {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .feature-box.reverse {
+            flex-direction: row-reverse;
+        }
+        .feature-content {
+            flex: 1;
+        }
+        .feature-content h3 {
+            font-size: 26px;
+            margin-bottom: 16px;
+            color: #2d3436;
+        }
+        .feature-content p {
+            color: #636e72;
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+        .feature-visual {
+            flex: 1;
+            background: linear-gradient(135deg, #f0edff, #e8e4ff);
+            border-radius: 16px;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            color: #6c5ce7;
+        }
+
+        /* 步骤区 */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            counter-reset: step-counter;
+        }
+        .step-item {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 22px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .step-number {
+            width: 46px;
+            height: 46px;
+            background: #6c5ce7;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+        .step-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .step-item p {
+            color: #636e72;
+            font-size: 14px;
+        }
+
+        /* 常见问题 */
+        .faq-item {
+            background: #fff;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            padding: 22px 28px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            border-left: 4px solid #6c5ce7;
+        }
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 8px;
+        }
+        .faq-answer {
+            color: #636e72;
+            font-size: 15px;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #2d3436;
+            color: #b2bec3;
+            padding: 45px 0 30px;
+            margin-top: 30px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #b2bec3;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3d3d3d;
+            font-size: 13px;
+            color: #636e72;
+        }
+
+        /* 相关推荐 */
+        .recommend-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+        .recommend-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            transition: transform 0.3s;
+        }
+        .recommend-item:hover {
+            transform: translateX(6px);
+        }
+        .recommend-icon {
+            font-size: 30px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .feature-box, .feature-box.reverse {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .feature-visual {
+                min-height: 160px;
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            .recommend-list {
+                grid-template-columns: 1fr;
+            }
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .header-nav {
+                justify-content: center;
+            }
+            .section-title {
+                font-size: 26px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 14px;
+            }
+            .logo-text {
+                font-size: 22px;
+            }
+            .hero {
+                padding: 48px 0;
+            }
+            .feature-box {
+                padding: 24px;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <div class="logo-icon">呱</div>
+            <span class="logo-text">呱呱漫画</span>
+        </div>
+        <nav class="header-nav">
+            <a href="#home">首页</a>
+            <a href="#features">特色</a>
+            <a href="#categories">分类</a>
+            <a href="#guide">阅读指南</a>
+            <a href="#faq">常见问题</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- 首屏 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>呱呱漫画</h1>
+            <p>发现最精彩的漫画世界，海量高清资源每日更新，无论你是热血少年漫爱好者还是少女漫粉丝，呱呱漫画都能满足你的阅读需求。</p>
+            <span class="hero-badge">📚 全站免费 · 每日更新 · 高清画质</span>
+        </div>
+    </section>
+
+    <!-- 平台特色 -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">为什么选择呱呱漫画</h2>
+            <p class="section-subtitle">从阅读体验到资源丰富度，呱呱漫画为漫画爱好者打造一站式阅读空间</p>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="card-icon">📖</span>
+                    <h3>海量漫画库</h3>
+                    <p>收录热门连载、经典完结、小众佳作等数万部作品，涵盖日漫、国漫、韩漫等多种来源，分类细致便于查找。</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">⚡</span>
+                    <h3>极速更新</h3>
+                    <p>热门作品与日韩同步更新，新章节第一时间上线，不再需要漫长等待，追更体验流畅顺滑。</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🖥️</span>
+                    <h3>高清阅读体验</h3>
+                    <p>支持高清原图加载，多种阅读模式切换，翻页流畅，适配手机、平板和电脑不同屏幕尺寸。</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🔍</span>
+                    <h3>智能搜索推荐</h3>
+                    <p>支持按作品名、作者、标签精准搜索，并根据你的阅读历史推荐相似风格作品，发现好漫画更容易。</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">💾</span>
+                    <h3>离线缓存功能</h3>
+                    <p>支持将喜欢的章节缓存至本地，无网络环境下也能随时翻看，通勤路上、旅行途中不再无聊。</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🔔</span>
+                    <h3>个性追更提醒</h3>
+                    <p>订阅感兴趣的作品，更新后自动发送通知提醒，不错过任何一话精彩内容，追漫更省心。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门分类 -->
+    <section class="section section-alt" id="categories">
+        <div class="container">
+            <h2 class="section-title">人气漫画分类</h2>
+            <p class="section-subtitle">无论你喜欢什么题材，都能在呱呱漫画找到心头好</p>
+            <div class="tag-list">
+                <span class="tag">热血冒险</span>
+                <span class="tag">恋爱浪漫</span>
+                <span class="tag">玄幻修仙</span>
+                <span class="tag">悬疑推理</span>
+                <span class="tag">搞笑日常</span>
+                <span class="tag">科幻未来</span>
+                <span class="tag">校园青春</span>
+                <span class="tag">都市职场</span>
+                <span class="tag">古风宫廷</span>
+                <span class="tag">竞技体育</span>
+                <span class="tag">恐怖惊悚</span>
+                <span class="tag">百合耽美</span>
+            </div>
+            <div class="grid-4">
+                <div class="card" style="text-align:center">
+                    <span class="card-icon">🔥</span>
+                    <h3>热血冒险</h3>
+                    <p>少年成长、伙伴羁绊、战斗升级，充满激情与感动</p>
+                </div>
+                <div class="card" style="text-align:center">
+                    <span class="card-icon">💕</span>
+                    <h3>恋爱浪漫</h3>
+                    <p>甜蜜互动、曲折情感，让人心动的恋爱故事</p>
+                </div>
+                <div class="card" style="text-align:center">
+                    <span class="card-icon">🐉</span>
+                    <h3>玄幻修仙</h3>
+                    <p>修炼之路、法宝仙术，瑰丽宏大的东方幻想世界</p>
+                </div>
+                <div class="card" style="text-align:center">
+                    <span class="card-icon">🧩</span>
+                    <h3>悬疑推理</h3>
+                    <p>烧脑谜题、层层反转，挑战你的推理能力</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用步骤 -->
+    <section class="section" id="guide">
+        <div class="container">
+            <h2 class="section-title">呱呱漫画阅读指南</h2>
+            <p class="section-subtitle">只需四步，快速开始你的漫画之旅</p>
+            <div class="steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>打开呱呱漫画</h3>
+                    <p>通过浏览器访问呱呱漫画官网，无需注册即可浏览海量漫画内容。</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>搜索或浏览</h3>
+                    <p>使用关键词搜索作品名，或按分类标签、排行榜浏览发现感兴趣的漫画。</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>选择章节阅读</h3>
+                    <p>点击进入漫画详情页，查看目录选择起始章节，支持从上次阅读位置继续。</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <h3>收藏与追更</h3>
+                    <p>点击收藏加入书架，开启更新提醒，后续更新自动通知，追更不迷路。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色详解 -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="feature-box">
+                <div class="feature-content">
+                    <h3>智能阅读模式</h3>
+                    <p>呱呱漫画提供多种阅读模式以适应不同场景。竖屏滚动模式适合手机端快速浏览，双页翻页模式适合平板和电脑模拟纸质书体验。同时支持亮度调节、背景色切换（护眼模式），以及自动记住阅读进度功能。</p>
+                    <p>双击页面还可以快速放大图片细节，对于画面精美的作品，不错过任何一处精彩笔触。</p>
+                </div>
+                <div class="feature-visual">🖼️</div>
+            </div>
+            <div class="feature-box reverse">
+                <div class="feature-content">
+                    <h3>个性化推荐系统</h3>
+                    <p>呱呱漫画通过分析你的阅读偏好、收藏类型和停留时长，构建兴趣模型，在首页推荐你可能喜欢的作品。新用户可以通过选择感兴趣的标签快速建立初始推荐。</p>
+                    <p>推荐结果会随阅读行为动态调整，越用越懂你，帮你不断发现宝藏漫画。</p>
+                </div>
+                <div class="feature-visual">🎯</div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-content">
+                    <h3>社区互动氛围</h3>
+                    <p>每部作品都有专属讨论区，读者可以发表评论、分享心得、推荐同类型作品。还可以给喜欢的漫画点赞、评分，为其他读者提供参考。</p>
+                    <p>定期举办的投票活动让读者决定部分作品的番外篇内容，真正参与到作品生态中。</p>
+                </div>
+                <div class="feature-visual">💬</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用小贴士 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">资深读者都在用的技巧</h2>
+            <p class="section-subtitle">这些实用小技巧让你的呱呱漫画体验更上一层楼</p>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="card-icon">🏷️</span>
+                    <h3>善用标签组合筛选</h3>
+                    <p>搜索时叠加多个标签可以极大缩小范围，例如同时选择"古风"+"恋爱"+"完结"，快速找到符合心意的完整作品。</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🔖</span>
+                    <h3>合理使用书架分类</h3>
+                    <p>将书架按"连载中""已完结""待养肥"分组管理，养肥的作品攒够章节再看，阅读体验更连贯。</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📊</span>
+                    <h3>关注每周排行榜</h3>
+                    <p>人气榜、新作榜、完结榜每周更新，是发现优质作品的高效途径，避免在茫茫书海中盲目寻找。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="section section-alt" id="faq">
+        <div class="container">
+            <h2 class="section-title">常见问题解答</h2>
+            <p class="section-subtitle">关于呱呱漫画，你可能想知道这些</p>
+            <div class="faq-item">
+                <div class="faq-question">Q：呱呱漫画需要付费吗？</div>
+                <div class="faq-answer">呱呱漫画提供全站免费阅读服务，绝大多数漫画资源均可免费观看。部分极新章节可能会延迟一段时间免费开放，但整体无需付费即可享受丰富的漫画内容。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q：在手机上阅读体验如何？</div>
+                <div class="faq-answer">呱呱漫画针对手机端做了深度适配，支持竖屏连续滚动模式，图片自动适配屏幕宽度，加载速度快，流量消耗经过优化。同时支持横屏双页浏览，满足不同习惯。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q：漫画更新频率是怎样的？</div>
+                <div class="faq-answer">热门连载漫画通常与源站同步更新，更新后系统会第一时间上架。具体每部作品的更新周期取决于原作者和出版社的进度，呱呱漫画会尽力缩短延迟。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q：如何举报不良内容或提出建议？</div>
+                <div class="faq-answer">页面底部设有意见反馈入口，也可以通过官方联系渠道提交问题。平台会及时审核举报内容并处理，同时欢迎读者对功能改进提出宝贵建议。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q：收藏的作品会丢失吗？</div>
+                <div class="faq-answer">只要使用同一设备或账号访问，收藏数据会安全保存。建议注册账号并定期同步，多设备间也能保持书架数据一致。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 相关推荐 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">你可能还想了解</h2>
+            <p class="section-subtitle">拓展你的漫画视野</p>
+            <div class="recommend-list">
+                <div class="recommend-item">
+                    <span class="recommend-icon">📘</span>
+                    <div>
+                        <strong>国漫崛起佳作推荐</strong>
+                        <p style="color:#636e72;font-size:14px">盘点近年来剧情与画工俱佳的国产漫画作品</p>
+                    </div>
+                </div>
+                <div class="recommend-item">
+                    <span class="recommend-icon">📗</span>
+                    <div>
+                        <strong>日漫经典必读清单</strong>
+                        <p style="color:#636e72;font-size:14px">那些影响一代人的日本漫画神作</p>
+                    </div>
+                </div>
+                <div class="recommend-item">
+                    <span class="recommend-icon">📙</span>
+                    <div>
+                        <strong>韩漫热门题材解析</strong>
+                        <p style="color:#636e72;font-size:14px">了解韩国漫画独特的叙事风格与热门类型</p>
+                    </div>
+                </div>
+                <div class="recommend-item">
+                    <span class="recommend-icon">📕</span>
+                    <div>
+                        <strong>漫画阅读设备选择</strong>
+                        <p style="color:#636e72;font-size:14px">手机、平板还是电纸书？哪个更适合看漫画</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>呱呱漫画</h3>
+                <p style="font-size:14px">畅享漫画阅读的乐趣，发现更广阔的故事世界</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">首页</a>
+                <a href="#features">平台特色</a>
+                <a href="#categories">漫画分类</a>
+                <a href="#guide">阅读指南</a>
+                <a href="#faq">帮助中心</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>本站所有漫画资源仅供个人学习交流使用，请于下载后24小时内删除。如侵犯您的权益，请联系我们处理。</p>
+            <p style="margin-top:6px">© 2024 呱呱漫画阅读指南. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+      </html>
